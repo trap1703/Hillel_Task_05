@@ -1,0 +1,15 @@
+---
+- hosts: all
+  gather_facts: true
+  vars_files:
+    wordpress
+- name: install wp
+  hosts: wordpress
+  become: yes
+  become_method: sudo
+
+  roles:
+    - server
+    - php
+    - mysql
+    - wordpress
